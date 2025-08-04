@@ -1,0 +1,3 @@
+{
+    "*.{ts,js,mjs,json}": "npx eslint --config server/eslint.config.mjs --fix"
+}
