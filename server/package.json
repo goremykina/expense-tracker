@@ -1,23 +1,32 @@
 {
-  "name": "expense-tracker-server",
-  "version": "1.0.0",
-  "description": "",
-  "license": "",
-  "author": "",
-  "scripts": {
-    "clean": "tsc --build --clean",
-    "build": "npm run clean && tsc",
-    "dev": "nodemon src/app.ts",
-    "start": "node dist/app.js"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.1.0",
-    "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "express": "^5.1.0"
-  }
+    "name": "expense-tracker-server",
+    "version": "1.0.0",
+    "description": "",
+    "license": "",
+    "author": "",
+    "scripts": {
+        "clean": "tsc --build --clean",
+        "build": "npm run clean && tsc",
+        "dev": "nodemon src/app.ts",
+        "start": "node dist/app.js",
+        "lint": "eslint ./**/*.{ts,js,mjs,json}",
+        "lint:fix": "eslint './**/*.{ts,js,mjs,json}' --fix",
+        "format": "prettier --write './**/*.{ts,js,mjs,json}'"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.32.0",
+        "@types/express": "^5.0.3",
+        "@types/node": "^24.1.0",
+        "eslint": "^9.32.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.3",
+        "nodemon": "^3.1.10",
+        "prettier": "^3.6.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.2",
+        "typescript-eslint": "^8.39.0"
+    },
+    "dependencies": {
+        "express": "^5.1.0"
+    }
 }
