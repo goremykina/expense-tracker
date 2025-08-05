@@ -140,3 +140,6 @@ vite.config.ts.timestamp-*
 
 # Webstorm
 .idea
+
+# DB files
+data.sqlite
