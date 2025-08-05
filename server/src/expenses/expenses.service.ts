@@ -1,13 +1,6 @@
-import { insertExpense, selectAllExpenses, Expense } from './expenses.repository'
+import { createExpense, getAllExpenses } from './expenses.repository'
+import { CreateExpenseDto } from './dto/create-expense.dto'
 
-export function createExpense(data: Omit<Expense, 'id'>): Expense {
-    if (!data.name || data.amount <= 0) {
-        throw new Error('Invalid expense data')
-    }
+export const getExpenses = () => getAllExpenses()
 
-    return insertExpense(data)
-}
-
-export function getExpenses(): Expense[] {
-    return selectAllExpenses()
-}
+export const addExpense = (expenseData: CreateExpenseDto) => createExpense(expenseData)

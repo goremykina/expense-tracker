@@ -15,7 +15,6 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.32.0",
-        "@types/better-sqlite3": "^7.6.13",
         "@types/express": "^5.0.3",
         "@types/node": "^24.1.0",
         "eslint": "^9.32.0",
@@ -23,12 +22,13 @@
         "eslint-plugin-prettier": "^5.5.3",
         "nodemon": "^3.1.10",
         "prettier": "^3.6.2",
+        "prisma": "^6.13.0",
         "ts-node": "^10.9.2",
         "typescript": "^5.9.2",
         "typescript-eslint": "^8.39.0"
     },
     "dependencies": {
-        "better-sqlite3": "^12.2.0",
+        "@prisma/client": "^6.13.0",
         "dotenv": "^17.2.1",
         "express": "^5.1.0"
     }

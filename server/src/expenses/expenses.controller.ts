@@ -1,13 +1,11 @@
 import express from 'express'
 import { Request, Response } from 'express'
-
-import { createExpense, getExpenses } from './expenses.service'
-
+import { addExpense, getExpenses } from './expenses.service'
 const router = express.Router()
 
-router.post('/', (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
     try {
-        const expense = createExpense(req.body)
+        const expense = await addExpense(req.body)
         res.status(201).json(expense)
     } catch (e: unknown) {
         if (e instanceof Error) {
@@ -18,8 +16,8 @@ router.post('/', (req: Request, res: Response) => {
     }
 })
 
-router.get('/', (req: Request, res: Response) => {
-    const expenses = getExpenses()
+router.get('/', async (req: Request, res: Response) => {
+    const expenses = await getExpenses()
     res.json(expenses)
 })
 

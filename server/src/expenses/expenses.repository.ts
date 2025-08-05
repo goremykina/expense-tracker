@@ -1,31 +1,12 @@
-import db from '../db/db.service'
+import { Expense, PrismaClient } from '@prisma/client'
+import { CreateExpenseDto } from './dto/create-expense.dto'
 
-export interface Expense {
-    id?: number
-    name: string
-    amount: number
-    currency: string
-    category: string
-    date: string
+const prisma = new PrismaClient()
+
+export const getAllExpenses = (): Promise<Expense[]> => {
+    return prisma.expense.findMany()
 }
 
-export function insertExpense(expense: Omit<Expense, 'id'>): Expense {
-    const stmt = db.prepare(`
-    INSERT INTO expenses (name, amount, currency, category, date)
-    VALUES (?, ?, ?, ?, ?)
-  `)
-
-    const result = stmt.run(expense.name, expense.amount, expense.currency, expense.category, expense.date)
-
-    return {
-        id: Number(result.lastInsertRowid),
-        ...expense,
-    }
-}
-
-export function selectAllExpenses(): Expense[] {
-    const stmt = db.prepare(`
-    SELECT * FROM expenses ORDER BY date DESC
-  `)
-    return stmt.all() as Expense[]
+export const createExpense = (data: CreateExpenseDto) => {
+    return prisma.expense.create({ data: data })
 }
