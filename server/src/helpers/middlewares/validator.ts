@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 
-export const validateExpense = (req: Request, res: Response, next: NextFunction) => {
+const dateRegex = /^\d{4}-\d{2}-\d{2}$/
+
+export const validateExpenseCreation = (req: Request, res: Response, next: NextFunction) => {
     const { name, amount, currency, category, date } = req.body
     const errors: string[] = []
 
@@ -20,7 +22,6 @@ export const validateExpense = (req: Request, res: Response, next: NextFunction)
         errors.push('Invalid or missing category')
     }
 
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/
     if (!date || typeof date !== 'string' || !dateRegex.test(date)) {
         errors.push('Invalid or missing date (expected format YYYY-MM-DD)')
     }

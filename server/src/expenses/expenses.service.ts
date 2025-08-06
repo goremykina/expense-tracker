@@ -1,15 +1,18 @@
 import { ExpensesRepository } from './expenses.repository'
 import { CreateExpenseDto } from './dto/create-expense.dto'
-import { logger } from '../helpers/Logger'
 
 export const ExpensesService = {
-    getExpenses: () => {
-        logger.info('Fetching all expenses')
-        return ExpensesRepository.getAllExpenses()
+    getExpenses: (filters: { limit?: number; offset?: number; fromDate?: string; toDate?: string }) => {
+        const defaultedFilters = {
+            limit: filters.limit ?? 10,
+            offset: filters.offset ?? 0,
+            fromDate: filters.fromDate ?? '',
+            toDate: filters.toDate ?? '',
+        }
+        return ExpensesRepository.getAllExpenses(defaultedFilters)
     },
 
     addExpense: (expenseData: CreateExpenseDto) => {
-        logger.info('Adding new expense', { expenseData })
         return ExpensesRepository.createExpense(expenseData)
     },
 }

@@ -1,31 +1,29 @@
 import express from 'express'
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response } from 'express'
 import { ExpensesService } from './expenses.service'
-import { validateExpense } from '../helpers/middlewares/validator'
-import { logger } from '../helpers/Logger'
+import { validateExpenseCreation } from '../helpers/middlewares/validator'
+import { logger } from '../helpers/logger'
+
 const router = express.Router()
 
-router.post('/', validateExpense, async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const expense = await ExpensesService.addExpense(req.body)
-        logger.info('Expense created successfully', { expenseId: expense.id })
-        res.status(201).json(expense)
-    } catch (e: unknown) {
-        if (e instanceof Error) {
-            logger.error('Error creating expense', { message: e.message, stack: e.stack })
-            res.status(400).json({ error: e.message })
-            next(e)
-        } else {
-            logger.error('Unknown error creating expense', { error: e })
-            res.status(400).json({ error: 'Unknown error' })
-            next(e)
-        }
-    }
+router.post('/', validateExpenseCreation, async (req: Request, res: Response) => {
+    const expense = await ExpensesService.addExpense(req.body)
+    logger.info('Expense created successfully', { expenseId: expense.id })
+    res.status(200).json(expense)
 })
 
 router.get('/', async (req: Request, res: Response) => {
-    const expenses = await ExpensesService.getExpenses()
-    logger.info('Fetched expenses', { expenses })
+    const { limit, offset, fromDate, toDate } = req.query
+
+    const filters = {
+        limit: limit ? Number(limit) : undefined,
+        offset: offset ? Number(offset) : undefined,
+        fromDate: typeof fromDate === 'string' ? fromDate : undefined,
+        toDate: typeof toDate === 'string' ? toDate : undefined,
+    }
+
+    const expenses = await ExpensesService.getExpenses(filters)
+    logger.info('Fetched expenses', { expenses, filters })
     res.json(expenses)
 })
 
