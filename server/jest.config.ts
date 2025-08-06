@@ -1,11 +1,8 @@
 import { Config } from 'jest'
-import { createDefaultPreset } from 'ts-jest'
-
-const { transform } = createDefaultPreset()
 
 const config: Config = {
+    preset: 'ts-jest',
     testEnvironment: 'node',
-    transform,
 }
 
 export default config
