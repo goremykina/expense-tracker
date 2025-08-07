@@ -30,4 +30,10 @@ export const ExpensesRepository = {
     createExpense: async (data: CreateExpenseDto): Promise<Expense> => {
         return prisma.expense.create({ data })
     },
+
+    getUniqExpenseById: async (id: number): Promise<Expense | null> => {
+        return prisma.expense.findUnique({
+            where: { id },
+        })
+    },
 }

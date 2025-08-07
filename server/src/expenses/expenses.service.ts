@@ -15,4 +15,8 @@ export const ExpensesService = {
     addExpense: (expenseData: CreateExpenseDto) => {
         return ExpensesRepository.createExpense(expenseData)
     },
+
+    getExpenseById: (expenseId: number) => {
+        return ExpensesRepository.getUniqExpenseById(expenseId)
+    },
 }

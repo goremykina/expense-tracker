@@ -27,4 +27,18 @@ router.get('/', async (req: Request, res: Response) => {
     res.json(expenses)
 })
 
+router.get('/:id', async (req: Request, res: Response) => {
+    const { id } = req.params
+    const expenseId = Number(id)
+    const expense = await ExpensesService.getExpenseById(expenseId)
+    if (!expense) {
+        res.status(404).json({
+            message: 'Not Found',
+        })
+        return
+    }
+    logger.info('Get expense by id', { expense })
+    res.json(expense)
+})
+
 export default router
