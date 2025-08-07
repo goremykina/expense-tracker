@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import { ExpensesService } from './expenses.service'
 import { validateExpenseCreation, validateExpenseUpdate } from '../helpers/middlewares/validator'
 import { logger } from '../helpers/logger'
+import { NotFoundException } from '../helpers/exeptions'
 
 const router = express.Router()
 
@@ -32,10 +33,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     const expenseId = Number(id)
     const expense = await ExpensesService.getExpenseById(expenseId)
     if (!expense) {
-        res.status(404).json({
-            message: 'Not Found',
-        })
-        return
+        throw new NotFoundException('Expense not found')
     }
     logger.info('Get expense by id', { expense })
     res.json(expense)
@@ -47,12 +45,12 @@ router.patch('/:id', validateExpenseUpdate, async (req: Request, res: Response) 
 
     const existing = await ExpensesService.getExpenseById(expenseId)
     if (!existing) {
-        return res.status(404).json({ error: 'Expense not found' })
-    } else {
-        const updatedExpense = await ExpensesService.updateExpense(expenseId, req.body)
-        logger.info('Expense updated', { updatedExpense })
-        res.status(200).json(updatedExpense)
+        throw new NotFoundException('Expense not found')
     }
+
+    const updatedExpense = await ExpensesService.updateExpense(expenseId, req.body)
+    logger.info('Expense updated', { updatedExpense })
+    res.status(200).json(updatedExpense)
 })
 
 router.delete('/:id', async (req: Request, res: Response) => {
@@ -61,12 +59,12 @@ router.delete('/:id', async (req: Request, res: Response) => {
 
     const existing = await ExpensesService.getExpenseById(expenseId)
     if (!existing) {
-        return res.status(404).json({ error: 'Expense not found' })
-    } else {
-        await ExpensesService.deleteExpense(expenseId)
-        logger.info('Expense deleted', { expenseId })
-        res.status(200).send('Expense deleted successfully')
+        throw new NotFoundException('Expense not found')
     }
+
+    await ExpensesService.deleteExpense(expenseId)
+    logger.info('Expense deleted', { expenseId })
+    res.sendStatus(204)
 })
 
 export default router

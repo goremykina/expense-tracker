@@ -18,7 +18,7 @@ export const ExpensesService = {
     },
 
     getExpenseById: (expenseId: number) => {
-        return ExpensesRepository.getUniqExpenseById(expenseId)
+        return ExpensesRepository.getExpenseById(expenseId)
     },
 
     updateExpense: (expenseId: number, data: UpdateExpenseDto) => {

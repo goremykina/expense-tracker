@@ -16,7 +16,7 @@ export const ExpensesRepository = {
         fromDate: string
         toDate: string
     }): Promise<Expense[]> => {
-        return prisma.expense.findMany({
+        return await prisma.expense.findMany({
             where: {
                 AND: [fromDate ? { date: { gte: fromDate } } : {}, toDate ? { date: { lte: toDate } } : {}],
             },
@@ -29,24 +29,24 @@ export const ExpensesRepository = {
     },
 
     createExpense: async (data: CreateExpenseDto): Promise<Expense> => {
-        return prisma.expense.create({ data })
+        return await prisma.expense.create({ data })
     },
 
-    getUniqExpenseById: async (id: number): Promise<Expense | null> => {
-        return prisma.expense.findUnique({
+    getExpenseById: async (id: number): Promise<Expense | null> => {
+        return await prisma.expense.findUnique({
             where: { id },
         })
     },
 
-    updateExpense: (id: number, data: UpdateExpenseDto) => {
-        return prisma.expense.update({
+    updateExpense: async (id: number, data: UpdateExpenseDto) => {
+        return await prisma.expense.update({
             where: { id },
             data,
         })
     },
 
-    deleteExpense: (id: number) => {
-        return prisma.expense.delete({
+    deleteExpense: async (id: number) => {
+        return await prisma.expense.delete({
             where: { id },
         })
     },

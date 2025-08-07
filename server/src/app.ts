@@ -8,7 +8,6 @@ import { errorHandler } from './helpers/middlewares/errorHandler'
 import { notFoundHandler } from './helpers/middlewares/notFoundHandler'
 
 const app = express()
-const port = process.env.PORT || 3001
 
 app.get('/ping', (req: Request, res: Response) => {
     res.send({ message: 'pong' })
@@ -20,6 +19,10 @@ app.use('/api/expenses', expensesRouter)
 app.use(errorHandler)
 app.use(notFoundHandler)
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+export function start() {
+    const port = process.env.PORT || 3001
+
+    app.listen(port, () => {
+        console.log(`The app listening on port ${port}`)
+    })
+}
