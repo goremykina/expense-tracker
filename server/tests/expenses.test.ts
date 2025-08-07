@@ -35,4 +35,27 @@ describe('ExpensesService', () => {
             expect(new Date(exp.date) <= new Date(toDate)).toBe(true)
         })
     })
+
+    it('should get an expense by ID', async () => {
+        const expenseData: CreateExpenseDto = {
+            name: 'Milk',
+            amount: 4.2,
+            currency: 'USD',
+            category: 'Food',
+            date: new Date().toISOString(),
+        }
+
+        const createdExpense = await ExpensesService.addExpense(expenseData)
+        const fetchedExpense = await ExpensesService.getExpenseById(createdExpense.id)
+
+        expect(fetchedExpense).not.toBeNull()
+        expect(fetchedExpense?.id).toBe(createdExpense.id)
+        expect(fetchedExpense?.name).toBe('Milk')
+    })
+
+    it('should return null if expense not found', async () => {
+        const nonExistentId = 999999
+        const result = await ExpensesService.getExpenseById(nonExistentId)
+        expect(result).toBeNull()
+    })
 })
