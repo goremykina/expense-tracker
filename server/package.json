@@ -6,7 +6,7 @@
     "author": "",
     "scripts": {
         "clean": "rimraf dist",
-        "build": "npm run clean && tsc",
+        "build": "npm run clean && tsc --project tsconfig.build.json",
         "dev": "nodemon src/index.ts",
         "start": "node dist/index.js",
         "lint": "eslint ./**/*.{ts,js,mjs,json}",
