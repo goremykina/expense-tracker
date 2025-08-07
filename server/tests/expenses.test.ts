@@ -58,4 +58,45 @@ describe('ExpensesService', () => {
         const result = await ExpensesService.getExpenseById(nonExistentId)
         expect(result).toBeNull()
     })
+
+    it('should update an existing expense', async () => {
+        const initialExpense: CreateExpenseDto = {
+            name: 'Cheese',
+            amount: 10,
+            currency: 'USD',
+            category: 'Food',
+            date: new Date('2025-08-01').toISOString(),
+        }
+
+        const created = await ExpensesService.addExpense(initialExpense)
+
+        const updateData = {
+            name: 'Cheddar Cheese',
+            amount: 16,
+            currency: 'PLN',
+            category: 'Groceries',
+            date: new Date('2025-08-02').toISOString(),
+        }
+
+        const updated = await ExpensesService.updateExpense(created.id, updateData)
+
+        expect(updated.id).toBe(created.id)
+        expect(updated.name).toBe(updateData.name)
+        expect(Number(updated.amount)).toBe(updateData.amount)
+        expect(updated.category).toBe(updateData.category)
+        expect(new Date(updated.date).toISOString()).toBe(updateData.date)
+    })
+
+    it('should throw an error when updating non-existent expense', async () => {
+        const nonExistentId = 999999
+        const updateData = {
+            name: 'Updated Name',
+            amount: 10.0,
+            currency: 'USD',
+            category: 'Food',
+            date: new Date().toISOString(),
+        }
+
+        await expect(ExpensesService.updateExpense(nonExistentId, updateData)).rejects.toThrow()
+    })
 })
