@@ -99,4 +99,27 @@ describe('ExpensesService', () => {
 
         await expect(ExpensesService.updateExpense(nonExistentId, updateData)).rejects.toThrow()
     })
+
+    it('should delete an existing expense', async () => {
+        const expenseToDelete = await ExpensesService.addExpense({
+            name: 'Delete me',
+            amount: 5,
+            currency: 'USD',
+            category: 'Test',
+            date: new Date().toISOString(),
+        })
+
+        const existing = await ExpensesService.getExpenseById(expenseToDelete.id)
+        expect(existing).not.toBeNull()
+
+        await ExpensesService.deleteExpense(expenseToDelete.id)
+
+        const afterDelete = await ExpensesService.getExpenseById(expenseToDelete.id)
+        expect(afterDelete).toBeNull()
+    })
+
+    it('should throw an error when deleting non-existent expense', async () => {
+        const nonExistentId = 999999
+        await expect(ExpensesService.deleteExpense(nonExistentId)).rejects.toThrow()
+    })
 })
