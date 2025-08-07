@@ -44,4 +44,10 @@ export const ExpensesRepository = {
             data,
         })
     },
+
+    deleteExpense: (id: number) => {
+        return prisma.expense.delete({
+            where: { id },
+        })
+    },
 }

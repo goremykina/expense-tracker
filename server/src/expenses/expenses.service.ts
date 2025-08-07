@@ -24,4 +24,8 @@ export const ExpensesService = {
     updateExpense: (expenseId: number, data: UpdateExpenseDto) => {
         return ExpensesRepository.updateExpense(expenseId, data)
     },
+
+    async deleteExpense(id: number) {
+        return ExpensesRepository.deleteExpense(id)
+    },
 }

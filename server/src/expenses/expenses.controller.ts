@@ -55,4 +55,18 @@ router.patch('/:id', validateExpenseUpdate, async (req: Request, res: Response) 
     }
 })
 
+router.delete('/:id', async (req: Request, res: Response) => {
+    const { id } = req.params
+    const expenseId = Number(id)
+
+    const existing = await ExpensesService.getExpenseById(expenseId)
+    if (!existing) {
+        return res.status(404).json({ error: 'Expense not found' })
+    } else {
+        await ExpensesService.deleteExpense(expenseId)
+        logger.info('Expense deleted', { expenseId })
+        res.status(200).send('Expense deleted successfully')
+    }
+})
+
 export default router
