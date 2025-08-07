@@ -1,5 +1,6 @@
 import { ExpensesRepository } from './expenses.repository'
 import { CreateExpenseDto } from './dto/create-expense.dto'
+import { UpdateExpenseDto } from './dto/update-expense.dto'
 
 export const ExpensesService = {
     getExpenses: (filters?: { limit?: number; offset?: number; fromDate?: string; toDate?: string }) => {
@@ -18,5 +19,9 @@ export const ExpensesService = {
 
     getExpenseById: (expenseId: number) => {
         return ExpensesRepository.getUniqExpenseById(expenseId)
+    },
+
+    updateExpense: (expenseId: number, data: UpdateExpenseDto) => {
+        return ExpensesRepository.updateExpense(expenseId, data)
     },
 }

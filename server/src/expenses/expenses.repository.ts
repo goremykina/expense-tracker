@@ -1,5 +1,6 @@
 import { Expense, PrismaClient } from '@prisma/client'
 import { CreateExpenseDto } from './dto/create-expense.dto'
+import { UpdateExpenseDto } from './dto/update-expense.dto'
 
 const prisma = new PrismaClient()
 
@@ -34,6 +35,13 @@ export const ExpensesRepository = {
     getUniqExpenseById: async (id: number): Promise<Expense | null> => {
         return prisma.expense.findUnique({
             where: { id },
+        })
+    },
+
+    updateExpense: (id: number, data: UpdateExpenseDto) => {
+        return prisma.expense.update({
+            where: { id },
+            data,
         })
     },
 }

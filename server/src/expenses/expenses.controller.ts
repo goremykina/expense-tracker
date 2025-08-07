@@ -1,7 +1,7 @@
 import express from 'express'
 import { Request, Response } from 'express'
 import { ExpensesService } from './expenses.service'
-import { validateExpenseCreation } from '../helpers/middlewares/validator'
+import { validateExpenseCreation, validateExpenseUpdate } from '../helpers/middlewares/validator'
 import { logger } from '../helpers/logger'
 
 const router = express.Router()
@@ -39,6 +39,20 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
     logger.info('Get expense by id', { expense })
     res.json(expense)
+})
+
+router.patch('/:id', validateExpenseUpdate, async (req: Request, res: Response) => {
+    const { id } = req.params
+    const expenseId = Number(id)
+
+    const existing = await ExpensesService.getExpenseById(expenseId)
+    if (!existing) {
+        return res.status(404).json({ error: 'Expense not found' })
+    } else {
+        const updatedExpense = await ExpensesService.updateExpense(expenseId, req.body)
+        logger.info('Expense updated', { updatedExpense })
+        res.status(200).json(updatedExpense)
+    }
 })
 
 export default router
