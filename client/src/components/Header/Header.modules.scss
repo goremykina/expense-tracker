@@ -1,0 +1,6 @@
+@use '../../styles/variables.scss' as *;
+
+.app-header {
+    background-color: $color-primary;
+    padding: 16px 24px;
+}
