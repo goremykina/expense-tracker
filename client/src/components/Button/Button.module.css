@@ -1,0 +1,26 @@
+.button {
+    padding: 10px 107px;
+    border-radius: 15px;
+    border: none;
+}
+
+.primary {
+    background-color:  var(--btn-primary-bg);
+    color:var(--btn-primary-text);
+    font-size: 16px;
+}
+
+.ghost {
+    color: var(--bth-warning-text);
+    background-color: var(--btn-secondary-bg)
+}
+
+.disabled {
+    &.primary {
+        color:var(--btn-primary-text);
+    }
+
+    &.ghost {
+        background-color: var(--btn-secondary-bg)
+    }
+}
