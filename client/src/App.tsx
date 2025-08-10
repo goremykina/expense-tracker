@@ -1,11 +1,15 @@
 import './App.css'
+import { Header } from "./components/Header";
+import { Loader } from "./components/Loader";
 
 function App() {
+
     return (
         <div>
-            Hello, World!
+            <Header />
+            <Loader />
         </div>
     )
 }
 
-export default App
+export default App;

@@ -1,0 +1,4 @@
+.app-header {
+    background-color: var(--btn-primary-bg);
+    padding: 16px 24px;
+}
