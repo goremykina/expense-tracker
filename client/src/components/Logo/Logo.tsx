@@ -1,5 +1,5 @@
-import logo from '../../assets/Logo.svg'
+import LogoIcon from '../../assets/logo.svg?react'
 
 export function Logo() {
-    return <img src={logo} alt="logo" />
+    return <LogoIcon />
 }

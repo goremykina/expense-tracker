@@ -1,6 +1,6 @@
-import loader from '../../assets/loader.svg'
-import './Loader.module.css'
+import LoaderIcon from '../../assets/loader.svg?react'
+import styles from './Loader.module.css'
 
 export function Loader() {
-    return <img className="loader" src={loader} alt="loader"></img>
+    return <LoaderIcon className={styles.loader} />
 }
