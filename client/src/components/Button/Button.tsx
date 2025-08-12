@@ -1,12 +1,15 @@
 import styles from './Button.module.css'
+import React from "react";
 
 interface ButtonProps {
     text: string
     disabled?: boolean
-    variant: 'primary' | 'ghost'
+    variant?: 'primary' | 'ghost',
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
+    width?: 'full-width' | 'fit-content'
 }
 
-export function Button({ text, disabled, variant }: ButtonProps) {
+export function Button({ text, disabled, variant='primary', onClick, width }: ButtonProps) {
     const getVariantClassName = (): string => {
         switch (variant) {
             case 'primary':
@@ -18,10 +21,22 @@ export function Button({ text, disabled, variant }: ButtonProps) {
         }
     }
 
+    const getWidth = (): string => {
+        switch (width) {
+            case 'full-width':
+                return 'full-width'
+            case 'fit-content':
+                return 'fit-content'
+            default:
+                return ''
+        }
+    }
+
     return (
         <button
-            className={`${styles.button} ${styles[getVariantClassName()]}  ${disabled ? styles.disabled : ''}`}
+            className={`${styles.button} ${styles[getVariantClassName()]} ${styles[getWidth()]} ${disabled ? styles.disabled : ''}`}
             disabled={disabled}
+            onClick={onClick}
         >
             {text}
         </button>

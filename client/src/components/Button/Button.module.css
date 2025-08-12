@@ -24,3 +24,7 @@
         background-color: var(--btn-secondary-bg);
     }
 }
+
+.full-width {
+    width: 100%
+}
