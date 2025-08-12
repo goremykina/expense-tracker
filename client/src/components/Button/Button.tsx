@@ -1,13 +1,13 @@
-import  styles from './Button.module.css'
+import styles from './Button.module.css'
 
 interface ButtonProps {
-    text: string,
-    disabled?: boolean,
+    text: string
+    disabled?: boolean
     variant: 'primary' | 'ghost'
 }
 
 export function Button({ text, disabled, variant }: ButtonProps) {
-    const getVariantClassName = (): string =>  {
+    const getVariantClassName = (): string => {
         switch (variant) {
             case 'primary':
                 return 'primary'
@@ -19,7 +19,10 @@ export function Button({ text, disabled, variant }: ButtonProps) {
     }
 
     return (
-        <button className={`${styles.button} ${styles[getVariantClassName()]}  ${disabled ? styles.disabled : ''}`} disabled={disabled}>
+        <button
+            className={`${styles.button} ${styles[getVariantClassName()]}  ${disabled ? styles.disabled : ''}`}
+            disabled={disabled}
+        >
             {text}
         </button>
     )

@@ -5,22 +5,22 @@
 }
 
 .primary {
-    background-color:  var(--btn-primary-bg);
-    color:var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
+    color: var(--secondary-text);
     font-size: 16px;
 }
 
 .ghost {
     color: var(--bth-warning-text);
-    background-color: var(--btn-secondary-bg)
+    background-color: var(--btn-secondary-bg);
 }
 
 .disabled {
     &.primary {
-        color:var(--btn-primary-text);
+        color: var(--secondary-text);
     }
 
     &.ghost {
-        background-color: var(--btn-secondary-bg)
+        background-color: var(--btn-secondary-bg);
     }
 }
