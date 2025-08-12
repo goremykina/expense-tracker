@@ -5,6 +5,7 @@ import { Icon } from './components/Icon'
 import { Input } from './components/Input'
 import { InputLabel } from './components/InputLabel'
 import { Loader } from './components/Loader'
+import { Button } from "./components/Button";
 
 function App() {
     return (
@@ -20,8 +21,18 @@ function App() {
                     placeholder='Text input'
                     helperText='Caption'
                     id={'user'}
+                    value={'123123'}
+                    leftIcon={'search'}
+                    rightIcon={'arrow'}
                 />
             </>
+
+            <Button
+                text={'Sign in'}
+                disabled={false}
+                width={'full-width'}
+                onClick={(e) => e.preventDefault()}
+            />
         </div>
     )
 }

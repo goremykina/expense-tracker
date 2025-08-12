@@ -6,11 +6,9 @@ interface InputLabel {
     htmlFor: string
 }
 export function InputLabel({ children, htmlFor }: InputLabel) {
-    console.log(children)
     return (
         <>
             <label htmlFor={htmlFor} className={style['input-label']}>
-                {'Label'}
                 {children}
             </label>
         </>
