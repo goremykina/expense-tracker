@@ -1,14 +1,22 @@
 :root {
+    --page-bg: #F2F1F9;
+
     --btn-primary-bg: #3629b7;
     --primary-text: #3629b7;
 
-    --btn-secondary-bg: #ffffff;
+    --secondary-bg: #ffffff;
     --secondary-text: #ffffff;
 
-    --bth-warning-text: #ff4267;
+    --muted-text: #6B6F7B;
+    --text-tertiary: #313A4E;
 
-    --border-color: #cacaca;
+    --danger: #ff4267;
+
+    --border-primary-color: #cacaca;
+    --border-second-color: #D9D9D9;
 
     --default-text: #979797;
     --placeholder-text: #cacaca;
+
+    --table-bg: #f9fafb;
 }

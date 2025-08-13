@@ -1,17 +1,29 @@
 import { icons, type IconName } from '../../assets'
+import styles from './Icon.module.css'
 
 type IconProps = {
     iconName: IconName
     size?: number
-    color?: string
+    color?: 'primary' | 'danger' | 'secondary'
 }
 
 export function Icon({ iconName, size = 24, color }: IconProps) {
     const SelectedIcon = icons[iconName]
 
+    const getColorClassName = () => {
+        switch (color) {
+            case 'primary':
+                return styles.primary
+            case 'danger':
+                return styles.danger
+            default:
+                return styles.secondary
+        }
+    }
+
     if (!SelectedIcon) {
         return null
     }
 
-    return <SelectedIcon width={size} height={size} fill={color} />
+    return <SelectedIcon className={getColorClassName()} width={size} height={size} />
 }

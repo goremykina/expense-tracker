@@ -1,0 +1,33 @@
+.btn-action {
+    background: none;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    height: 100%;
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    width: 49px;
+    height: 49px;
+    background-color: var(--btn-primary-bg);
+    justify-content: center;
+    border-radius: 10px
+}
+
+.table-total {
+    color: var(--danger)
+}

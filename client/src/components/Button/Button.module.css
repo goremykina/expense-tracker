@@ -11,8 +11,8 @@
 }
 
 .ghost {
-    color: var(--bth-warning-text);
-    background-color: var(--btn-secondary-bg);
+    color: var(--danger);
+    background-color: var(--secondary-bg);
 }
 
 .disabled {
@@ -21,7 +21,7 @@
     }
 
     &.ghost {
-        background-color: var(--btn-secondary-bg);
+        background-color: var(--secondary-bg);
     }
 }
 
