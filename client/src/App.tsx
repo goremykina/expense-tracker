@@ -5,24 +5,41 @@ import { Icon } from './components/Icon'
 import { Input } from './components/Input'
 import { InputLabel } from './components/InputLabel'
 import { Loader } from './components/Loader'
+import { Button } from "./components/Button";
 
 function App() {
     return (
         <div>
             <Header />
-            <Icon iconName="bell" size={15} />
-            <Loader />
-            <DatePicker />
 
-            <>
-                <InputLabel htmlFor='user'/>
-                <Input
-                    placeholder='Text input'
-                    helperText='Caption'
-                    id={'user'}
+            <div className={'app-container'}>
+                <Icon iconName="bell" size={15} />
+                <Loader />
+                <DatePicker />
+
+                <Button
+                    text={'Sign in'}
+                    disabled={false}
+                    onClick={(e) => e.preventDefault()}
                 />
-            </>
+
+                <>
+                    <InputLabel htmlFor='user'/>
+                    <Input
+                        placeholder='Text input'
+                        helperText='Caption'
+                        id={'user'}
+                        leftIcon={'search'}
+                        rightIcon={'arrow'}
+                    />
+                </>
+
+
+            </div>
+
         </div>
+
+
     )
 }
 

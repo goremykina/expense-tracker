@@ -1,5 +1,5 @@
 .button {
-    padding: 10px 107px;
+    padding: 12px;
     border-radius: 15px;
     border: none;
 }
@@ -23,4 +23,8 @@
     &.ghost {
         background-color: var(--btn-secondary-bg);
     }
+}
+
+.full-width {
+    width: 100%
 }

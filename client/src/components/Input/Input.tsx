@@ -1,16 +1,21 @@
 import styles from './Input.module.css'
 import React, { useState } from 'react'
+import { Icon } from "../Icon";
+import type { IconName } from "../../assets";
 
 interface InputProps {
     placeholder: string
+    id: string
     defaultValue?: string
     error?: boolean
     helperText?: string
     type?: string
-    id: string
-    leftIcon?: React.ReactNode
-    rightIcon?: React.ReactNode
+    leftIcon?: IconName
+    rightIcon?: IconName
+    value?: string
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
+
 export function Input({
     placeholder,
     defaultValue,
@@ -20,26 +25,39 @@ export function Input({
     id,
     leftIcon,
     rightIcon,
+    value,
+    onChange,
 }: InputProps) {
-    const [value, setValue] = useState(defaultValue || '')
-    console.log(value)
+    const [internalValue, setInternalValue] = useState(defaultValue || '')
+    const isControlled = value !== undefined
+    const displayValue = isControlled ? value : internalValue
+
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!isControlled) {
+            setInternalValue(e.target.value)
+        }
+
+        if (onChange) {
+            onChange(e)
+        }
+    }
 
     return (
         <div className={styles.inputWrapper}>
             <div className={styles.inputContainer}>
                 {leftIcon && (
-                    <span className={styles.iconLeft}>{leftIcon}</span>
+                    <span className={styles.iconLeft}>{<Icon iconName={leftIcon} size={16}/>}</span>
                 )}
                 <input
                     className={styles.input}
                     type={type}
                     placeholder={placeholder}
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={displayValue}
+                    onChange={handleOnChange}
                     id={id}
                 />
                 {rightIcon && (
-                    <span className={styles.iconRight}>{rightIcon}</span>
+                    <span className={styles.iconRight}>{<Icon iconName={rightIcon} size={16}/>}</span>
                 )}
             </div>
 
