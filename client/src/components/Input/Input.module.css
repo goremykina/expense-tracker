@@ -1,6 +1,7 @@
 .inputWrapper {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 .inputContainer {
     position: relative;
@@ -22,6 +23,7 @@
     color: var(--primary-text);
     font-size: 12px;
     font-weight: 600;
+    height: 16px;
 }
 
 .iconLeft {
@@ -29,6 +31,7 @@
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
+    height: 16px;
 }
 
 .iconRight {
@@ -36,4 +39,5 @@
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
+    line-height: 0;
 }

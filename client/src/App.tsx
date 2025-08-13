@@ -11,29 +11,35 @@ function App() {
     return (
         <div>
             <Header />
-            <Icon iconName="bell" size={15} />
-            <Loader />
-            <DatePicker />
 
-            <>
-                <InputLabel htmlFor='user'/>
-                <Input
-                    placeholder='Text input'
-                    helperText='Caption'
-                    id={'user'}
-                    value={'123123'}
-                    leftIcon={'search'}
-                    rightIcon={'arrow'}
+            <div className={'app-container'}>
+                <Icon iconName="bell" size={15} />
+                <Loader />
+                <DatePicker />
+
+                <Button
+                    text={'Sign in'}
+                    disabled={false}
+                    onClick={(e) => e.preventDefault()}
                 />
-            </>
 
-            <Button
-                text={'Sign in'}
-                disabled={false}
-                width={'full-width'}
-                onClick={(e) => e.preventDefault()}
-            />
+                <>
+                    <InputLabel htmlFor='user'/>
+                    <Input
+                        placeholder='Text input'
+                        helperText='Caption'
+                        id={'user'}
+                        leftIcon={'search'}
+                        rightIcon={'arrow'}
+                    />
+                </>
+
+
+            </div>
+
         </div>
+
+
     )
 }
 

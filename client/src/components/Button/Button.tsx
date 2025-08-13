@@ -28,7 +28,7 @@ export function Button({ text, disabled, variant='primary', onClick, width }: Bu
             case 'fit-content':
                 return 'fit-content'
             default:
-                return ''
+                return 'fit-content'
         }
     }
 
