@@ -26,6 +26,17 @@
     height: 16px;
 }
 
+.errorText {
+    color: var(--danger);
+}
+
+.icon {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .iconLeft {
     position: absolute;
     left: 15px;
