@@ -23,7 +23,7 @@
     align-items: center;
     width: 49px;
     height: 49px;
-    background-color: var(--btn-primary-bg);
+    background-color: var(--primary-bg);
     justify-content: center;
     border-radius: 10px
 }
