@@ -1,0 +1,15 @@
+.primary {
+    color: var(--primary-text);
+}
+
+.secondary {
+    color: var(--secondary-text);
+}
+
+.danger {
+    color: var(--danger);
+}
+
+.neutral {
+    color: var(--hint-text);
+}

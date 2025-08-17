@@ -1,0 +1,30 @@
+.button {
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+}
+
+.primary {
+    background-color: var(--primary-bg);
+    color: var(--secondary-text);
+    font-size: 16px;
+}
+
+.ghost {
+    color: var(--danger);
+    background-color: var(--secondary-bg);
+}
+
+.disabled {
+    &.primary {
+        color: var(--secondary-text);
+    }
+
+    &.ghost {
+        background-color: var(--secondary-bg);
+    }
+}
+
+.full-width {
+    width: 100%
+}
