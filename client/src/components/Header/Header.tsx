@@ -4,7 +4,7 @@ import styles from './Header.module.css'
 export function Header() {
     return (
         <header className={styles['app-header']}>
-            <Logo />
+            <Logo size={'small'} />
         </header>
     )
 }
