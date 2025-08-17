@@ -1,7 +1,7 @@
 :root {
     --page-bg: #F2F1F9;
 
-    --btn-primary-bg: #3629b7;
+    --primary-bg: #3629b7;
     --primary-text: #3629b7;
 
     --secondary-bg: #ffffff;
@@ -9,6 +9,8 @@
 
     --muted-text: #6B6F7B;
     --text-tertiary: #313A4E;
+    --info-text: #343434;
+    --hint-text: #898989;
 
     --danger: #ff4267;
 

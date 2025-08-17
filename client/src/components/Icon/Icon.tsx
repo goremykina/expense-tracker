@@ -4,7 +4,7 @@ import styles from './Icon.module.css'
 type IconProps = {
     iconName: IconName
     size?: number
-    color?: 'primary' | 'danger' | 'secondary'
+    color?: 'primary' | 'danger' | 'secondary' | 'neutral'
 }
 
 export function Icon({ iconName, size = 24, color }: IconProps) {
@@ -16,6 +16,8 @@ export function Icon({ iconName, size = 24, color }: IconProps) {
                 return styles.primary
             case 'danger':
                 return styles.danger
+            case 'neutral':
+                return styles.neutral
             default:
                 return styles.secondary
         }

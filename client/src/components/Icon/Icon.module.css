@@ -9,3 +9,7 @@
 .danger {
     color: var(--danger);
 }
+
+.neutral {
+    color: var(--hint-text);
+}

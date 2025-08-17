@@ -6,6 +6,9 @@ import calendar from './calendar.svg?react'
 import mail from './mail.svg?react'
 import search from './search.svg?react'
 import settings from './settings.svg?react'
+import hidePass from './hide-pass.svg?react'
+import showPass from './show-pass.svg?react'
+
 
 export const icons = {
     arrow,
@@ -16,6 +19,8 @@ export const icons = {
     mail,
     search,
     settings,
+    hidePass,
+    showPass
 } as const
 
 export type IconName = keyof typeof icons
