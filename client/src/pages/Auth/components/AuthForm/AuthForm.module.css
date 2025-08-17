@@ -1,0 +1,34 @@
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 120px 72px 50px;
+    gap: 90px;
+}
+
+.auth-form-title {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: var(--primary-text);
+    font-weight: 600;
+}
+
+.auth-form-img-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 73px;
+    align-items: center;
+}
+
+.auth-form-wrapper {
+    width: 440px;
+    background-color: var(--secondary-bg);
+    border-radius: 30px;
+    padding: 30px 57px;
+}
+
+.auth-form-img {
+    display: flex;
+    justify-content: center;
+    padding: 32px;
+}
